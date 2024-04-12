@@ -1,0 +1,6 @@
+.form-wrapper{
+    display: flex;
+    place-items: center;
+    place-content: center;
+    place-self: baseline;
+}
