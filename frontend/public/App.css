@@ -1,6 +1,11 @@
+#app{
+    display: block;
+    height: 100%;
+}
 .form-wrapper{
     display: flex;
-    place-items: center;
-    place-content: center;
-    place-self: baseline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
 }

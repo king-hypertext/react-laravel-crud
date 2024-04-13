@@ -13,12 +13,12 @@ import { ContextProvider } from './contexts/AuthContext';
 import Dashboard from './views/Dashboard';
 import 'animate.css/animate.min.css'
 // import 'bootstrap/dist/css/bootstrap.min.css'
-import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to='/app' replace />
+    element: <Navigate to='/app' replace={true} />
   },
   {
     path: '/',
