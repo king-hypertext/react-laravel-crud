@@ -1,44 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { MDBInput, MDBCol, MDBRow, MDBCheckbox, MDBBtn } from 'mdb-react-ui-kit';
+import { MDBInput, MDBBtn } from 'mdb-react-ui-kit';
+
+import DateTime from '../components/DateTime';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const [username, usernameValue] = useState('')
+  const [password, passwordValue] = useState('')
+  const [loading, setLoading] = useState('d-none')
+  const [buttonText, setButtonText] = useState('login')
   const handleLogin = (e) => {
     e.preventDefault();
-    
+    setLoading('')
+    setButtonText('authenticating')
+    console.log(username, password);
   }
   return (
     <>
       <Helmet>
-        <title>LOGIN</title>
+        <title>React-Laravel | LOGIN</title>
         <meta name="description" content="laravel-react crud login page" />
       </Helmet>
       <div className="form-wrapper">
         <div className="card p-4 p-md-5 border-0" style={{ maxWidth: '500px', width: '100%' }}>
           <form onSubmit={handleLogin}>
-            <MDBInput className='mb-4' type='text' label='Username' />
-            <MDBInput className='mb-4' type='password' label='Password' />
-
-            <MDBRow className='mb-4'>
-              <MDBCol className='d-flex justify-content-center'>
-                <MDBCheckbox id='form1Example3' label='Remember me' defaultChecked />
-              </MDBCol>
-              <MDBCol>
-                <a href='#!'>Forgot password?</a>
-              </MDBCol>
-            </MDBRow>
-
+            <MDBInput required title='Username is required' onChange={e => { usernameValue(e.target.value) }} className='mb-4' type='text' label='Username' />
+            <MDBInput required title='Enter your password' onChange={e => { passwordValue(e.target.value) }} className='mb-4' type='password' label='Password' />
             <MDBBtn type='submit' block>
-              Sign in
+              <span className={`spinner-border spinner-border-sm ${loading} me-2`} role="status" aria-hidden="true"></span>
+              {buttonText}
             </MDBBtn>
           </form>
+          <div className='my-4 d-flex justify-content-center '>
+            <DateTime date time />
+          </div>
+          <Link to={'forgot-password'} className='text-center'>Forgot password?</Link>
         </div>
       </div>
     </>
   )
 }
-// const styles = StyleSheet.create({
-// form:{
-// }
-// })
 export default Login
